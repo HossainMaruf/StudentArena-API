@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
+import { Post } from "./Post";
 
 export enum UserRole { ADMIN = "admin", USER = "user", GUEST = "guest" }
 export enum RelationType { SINGLE = "single", MARRIED = "married", COMPLICATED = "complicated"}
@@ -49,4 +50,7 @@ export class User {
 
     @UpdateDateColumn()
     updatedAt!: Date;
+
+    @OneToMany(() => Post, (post: Post) => post.user, { cascade: true, eager: true})
+    posts!: Post[];
 }

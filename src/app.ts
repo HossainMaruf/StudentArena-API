@@ -8,7 +8,7 @@ app.use(express.json());
 // Initialize MySQL connection
 AppDataSource.initialize()
  .then(() => console.log("Data Source Initialized"))
- .catch((err) => console.log("Error during Data Source Initialization: ", err));
+ .catch((err: any) => console.log("Error during Data Source Initialization: ", err));
 
 app.use("/users", userRoutes);
 
