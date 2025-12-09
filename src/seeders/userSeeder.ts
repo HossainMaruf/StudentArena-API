@@ -1,16 +1,21 @@
 import {faker} from "@faker-js/faker";
 import { User } from "../entities/User";
-import { DataSource } from "typeorm";
+import { AppDataSource } from "../data-source";
 
-export const userSeeder = async (AppDataSource: DataSource) => {
+export const userSeeder = async () => {
     const userRepository = AppDataSource.getRepository(User);
+    // Store all the users
+    const users: User[] = [];
+
     for(let i=0; i<20; i++) {
         const user = userRepository.create({
             name: faker.person.fullName(),
             email: faker.internet.email(),
             age: faker.number.int({min: 18, max: 60})
         });
-        await userRepository.save(user);
+        users.push(user);
     }
-    console.log("20 fake users inserted")
+    await userRepository.save(users);
+    console.log("Users seeded👍");
+    return users; // returning users so we can relate posts
 }

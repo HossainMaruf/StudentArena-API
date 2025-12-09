@@ -10,7 +10,7 @@
     "dev": "nodemon --watch \"src/**/*.ts\" --exec \"npx ts-node\" src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "seed": "ts-node src/seed.ts"
+    "seed": "ts-node src/seeders/index.ts"
   },
   "dependencies": {
     "express": "^5.2.1",

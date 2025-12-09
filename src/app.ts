@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import { AppDataSource } from "./data-source";
 import userRoutes from './routes/userRoutes';
+import postRoutes from './routes/postRoutes';
 
 const app: Application = express();
 app.use(express.json());
@@ -11,5 +12,6 @@ AppDataSource.initialize()
  .catch((err: any) => console.log("Error during Data Source Initialization: ", err));
 
 app.use("/users", userRoutes);
+app.use("/posts", postRoutes);
 
 export default app;
