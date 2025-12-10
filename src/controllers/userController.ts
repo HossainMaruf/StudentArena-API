@@ -28,3 +28,9 @@ export const deleteUser = async (req: Request, res: Response) => {
     if(!deleted) return res.status(404).json({message: "User not found"});
     res.json({message: "User deleted successfully"});
 }
+
+export const getUserWithPosts = async (req: Request, res: Response) => {
+    const user = await userService.getUserWithPosts(parseInt(req.params.id));
+    if(!user) return res.status(404).json({message: "User not found"});
+    res.json(user);
+}

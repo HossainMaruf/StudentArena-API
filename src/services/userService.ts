@@ -32,5 +32,14 @@ export const userService = {
     deleteUser: async (id: number): Promise<boolean> => {
         const result = await userRepository.delete({id});
         return result.affected != 0;
+    },
+
+    // Get a user with all posts
+    getUserWithPosts: async(id: number): Promise<User | null> => {
+        const user = await userRepository.findOne({
+            where: {id},
+            relations: {posts: true}
+        });
+        return user;
     }
 }

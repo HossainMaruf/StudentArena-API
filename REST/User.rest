@@ -3,7 +3,7 @@ GET http://localhost:5000/users
 Content-Type: application/json
 
 ### Get a user by id
-GET http://localhost:5000/users/99
+GET http://localhost:5000/users/15
 Content-Type: application/json
 
 ### Create a user
@@ -27,5 +27,9 @@ Content-Type: application/json
 }
 
 ### Delete a user
-DELETE http://localhost:5000/users/99
+DELETE http://localhost:5000/users/12
+Content-Type: application/json
+
+### Get a user with all posts
+GET http://localhost:5000/users/15/posts
 Content-Type: application/json

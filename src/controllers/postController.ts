@@ -28,3 +28,9 @@ export const deletePost = async (req: Request, res: Response) => {
     if(!deleted) return res.status(404).json({message: "Post not found"});
     res.json({message: "Post deleted successfully"});
 }
+
+export const getPostWithUser = async (req: Request, res: Response) => {
+    const post = await postService.getPostWithUser(parseInt(req.params.id));
+    if(!post) return res.status(404).json({message: "Post not found"});
+    res.json(post);
+}

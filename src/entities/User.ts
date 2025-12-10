@@ -51,6 +51,6 @@ export class User {
     @UpdateDateColumn()
     updatedAt!: Date;
 
-    @OneToMany(() => Post, (post: Post) => post.user, { cascade: true, eager: true})
+    @OneToMany(() => Post, (post: Post) => post.user, { cascade: true })
     posts!: Post[];
 }
