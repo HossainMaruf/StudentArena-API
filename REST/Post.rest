@@ -28,6 +28,6 @@ Content-Type: application/json
 DELETE http://localhost:5000/posts/45
 Content-Type: application/json
 
-### Get a post by id
+### Get a post with user
 GET http://localhost:5000/posts/15/user
 Content-Type: application/json

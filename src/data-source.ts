@@ -2,14 +2,15 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { User } from './entities/User';
 import { Post } from './entities/Post';
+import { env } from './config/env';
 
 export const AppDataSource = new DataSource({
-    type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: '',
-    database: 'student_arena',
+    type: env.DB_TYPE as "mysql",
+    host: env.DB_HOST,
+    port: env.DB_PORT,
+    username: env.DB_USERNAME,
+    password: env.DB_PASSWORD,
+    database: env.DB_NAME,
     synchronize: true,
     logging: false,
     entities: [User, Post],

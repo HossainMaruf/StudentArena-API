@@ -1,0 +1,9 @@
+### Registration
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "name": "Md. Maruf Hossain",
+    "email": "mmmarufhossain007@gmail.com",
+    "password": "112233"
+}

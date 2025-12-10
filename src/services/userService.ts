@@ -14,6 +14,11 @@ export const userService = {
         return userRepository.findOneBy({id})
     },
 
+    // Get a user by Email
+    getUserByEmail: async (email: string): Promise<User | null> => {
+        return userRepository.findOneBy({email});
+    },
+
     // Create a new user
     createUser: async (data: Partial<User>): Promise<User> => {
         const user = userRepository.create(data);
