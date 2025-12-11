@@ -1,9 +1,10 @@
 import { Router } from "express";
 import { createUser, deleteUser, getUserById, getUserByEmail, getUsers, updateUser, getUserWithPosts } from "../controllers/userController";
+import { authMiddleware } from "../middleware/authMiddleware";
 
 const router = Router();
 
-router.get("/", getUsers);
+router.get("/", authMiddleware, getUsers);
 router.get("/:id", getUserById);
 router.get("/email/:email", getUserByEmail);
 router.post("/", createUser);

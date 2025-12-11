@@ -22,7 +22,7 @@ POST http://localhost:5000/auth/logout
 Content-Type: application/json
 
 {
-    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NTQ5NDUsImV4cCI6MTc2ODA0Njk0NX0.WJWNcVWyN2EPphewxZgm_jqKiSjCNVCqzuQ6IqhoFOU"
+    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NTkyNzUsImV4cCI6MTc2ODA1MTI3NX0.yOps_2Vs64URCrOh18gdPsNlz-95khdlRElQiY5ikZY"
 }
 
 ### Get Access token by Refresh token
