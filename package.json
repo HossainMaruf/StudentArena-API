@@ -10,7 +10,7 @@
     "dev": "nodemon --watch \"src/**/*.ts\" --exec \"npx ts-node\" src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "db": "ts-node src/seeders/index.ts"
+    "db": "ts-node src/database/seeders/index.ts"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",

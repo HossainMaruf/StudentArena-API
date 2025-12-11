@@ -1,5 +1,5 @@
 import express, { Application } from "express";
-import { AppDataSource } from "./data-source";
+import { AppDataSource } from "./database/data-source";
 import userRoutes from './routes/userRoutes';
 import postRoutes from './routes/postRoutes';
 import authRoutes from './routes/authRoutes';

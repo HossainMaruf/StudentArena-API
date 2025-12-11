@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker";
-import { User } from "../entities/User";
+import { User } from "../../entities/User";
 import { AppDataSource } from "../data-source";
 
 export const userSeeder = async () => {

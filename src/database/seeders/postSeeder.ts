@@ -1,7 +1,7 @@
 import {faker} from "@faker-js/faker";
 import { AppDataSource } from "../data-source";
-import { Post } from "../entities/Post";
-import { User } from "../entities/User";
+import { Post } from "../../entities/Post";
+import { User } from "../../entities/User";
 
 export const postSeeder = async (users: User[]) => {
     const postRepository = AppDataSource.getRepository(Post);

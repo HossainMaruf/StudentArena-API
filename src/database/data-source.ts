@@ -1,8 +1,8 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-import { User } from './entities/User';
-import { Post } from './entities/Post';
-import { env } from './config/env';
+import { User } from '../entities/User';
+import { Post } from '../entities/Post';
+import { env } from '../config/env';
 
 export const AppDataSource = new DataSource({
     type: env.DB_TYPE as "mysql",
