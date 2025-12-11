@@ -15,11 +15,11 @@ export class User {
     @Column({unique: true, length: 50})
     email!: string;
 
-    @Column()
-    age!: number;
-
-    @Column({nullable: true, length: 20})
+    @Column({length: 256})
     password!: string;
+
+    @Column({nullable: true})
+    age!: number;
 
     @Column({nullable: true})
     profilePicture!: string;
@@ -45,12 +45,15 @@ export class User {
     @Column({type: "enum", enum: RelationType, default: RelationType.SINGLE})
     relationship!: RelationType
 
+    @Column({nullable: true})
+    refreshToken!: string;
+
     @CreateDateColumn()
     createdAt!: Date;
 
     @UpdateDateColumn()
     updatedAt!: Date;
 
-    @OneToMany(() => Post, (post: Post) => post.user, { cascade: true, eager: true})
+    @OneToMany(() => Post, (post: Post) => post.user, { cascade: true })
     posts!: Post[];
 }

@@ -6,8 +6,14 @@ export const getUsers = async (req: Request, res: Response) => {
     res.json(users);
 }
 
-export const getUser = async (req: Request, res: Response) => {
+export const getUserById = async (req: Request, res: Response) => {
     const user = await userService.getUserById(parseInt(req.params.id));
+    if(!user) return res.status(404).json({message: "User not found"});
+    res.json(user);
+}
+
+export const getUserByEmail = async (req: Request, res: Response) => {
+    const user = await userService.getUserByEmail(req.params.email);
     if(!user) return res.status(404).json({message: "User not found"});
     res.json(user);
 }
@@ -27,4 +33,10 @@ export const deleteUser = async (req: Request, res: Response) => {
     const deleted = await userService.deleteUser(parseInt(req.params.id));
     if(!deleted) return res.status(404).json({message: "User not found"});
     res.json({message: "User deleted successfully"});
+}
+
+export const getUserWithPosts = async (req: Request, res: Response) => {
+    const user = await userService.getUserWithPosts(parseInt(req.params.id));
+    if(!user) return res.status(404).json({message: "User not found"});
+    res.json(user);
 }

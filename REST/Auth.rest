@@ -1,0 +1,34 @@
+### Registration
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "name": "Md. Maruf Hossain",
+    "email": "example@gmail.com",
+    "password": "112233"
+}
+
+### Login
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "email": "example@gmail.com",
+    "password": "112233"
+}
+
+### Logout
+POST http://localhost:5000/auth/logout
+Content-Type: application/json
+
+{
+    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NTkyNzUsImV4cCI6MTc2ODA1MTI3NX0.yOps_2Vs64URCrOh18gdPsNlz-95khdlRElQiY5ikZY"
+}
+
+### Get Access token by Refresh token
+POST http://localhost:5000/auth/refresh
+Content-Type: application/json
+
+{
+    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NTQ4MTEsImV4cCI6MTc2ODA0NjgxMX0.MK40696z9hPW-yDOthcdjqkP4UYRmwTSanoo9sQ2CCk"
+}

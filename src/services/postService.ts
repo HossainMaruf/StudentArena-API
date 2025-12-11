@@ -32,5 +32,13 @@ export const postService = {
     deletePost: async (id: number): Promise<boolean> => {
         const result = await postRepository.delete({id});
         return result.affected != 0;
+    },
+
+    // Get a post with user
+    getPostWithUser: async (id: number): Promise<Post | null> => {
+        return postRepository.findOne({
+            where: {id},
+            relations: {user: true}
+        });
     }
 }
