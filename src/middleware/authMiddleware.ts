@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import { env } from "../config/env";
 import { User } from "../entities/User";
 import { userService } from "../services/userService";
+import { verifyAccessToken } from "../utils/jwt";
 
 export interface AuthRequest extends Request {
     user?: User;
@@ -20,7 +21,7 @@ export const authMiddleware = async (req: AuthRequest, res: Response, next: Next
         const token = authHeader.split(" ")[1];
 
         // Verify JWT
-        const decoded  = jwt.verify(token, env.JWT_SECRET) as {id: number};
+        const decoded  = verifyAccessToken(token) as {id: number};
         // Fetch the user
         const user = await userService.getUserById(decoded.id);
         if(!user) return res.status(401).json({message: "Unauthorized: User not found"});

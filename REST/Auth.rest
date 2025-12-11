@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "name": "Md. Maruf Hossain",
-    "email": "mmmarufhossain007@gmail.com",
+    "email": "example@gmail.com",
     "password": "112233"
 }
 
@@ -13,11 +13,22 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "email": "mmmarufhossain007@gmail.com",
+    "email": "example@gmail.com",
     "password": "112233"
 }
 
 ### Logout
 POST http://localhost:5000/auth/logout
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsImVtYWlsIjoibW1tYXJ1Zmhvc3NhaW4wMDdAZ21haWwuY29tIiwiaWF0IjoxNzY1NDQzNTQ4LCJleHAiOjE3NjU0NDcxNDh9.ft6wQACekx2BrXfot0sX8lBEwQaE1kjOO6nG-oNDMIs
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NTMzNTAsImV4cCI6MTc2ODA0NTM1MH0.q8W2mdR1RRx8-7pWw9qT5t3N_0mssPdY6_owLkyNruI"
+}
+
+### Get Access token by Refresh token
+POST http://localhost:5000/auth/refresh
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NTMzNTAsImV4cCI6MTc2ODA0NTM1MH0.q8W2mdR1RRx8-7pWw9qT5t3N_0mssPdY6_owLkyNruI"
+}

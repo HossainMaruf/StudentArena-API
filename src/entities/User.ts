@@ -45,6 +45,9 @@ export class User {
     @Column({type: "enum", enum: RelationType, default: RelationType.SINGLE})
     relationship!: RelationType
 
+    @Column({nullable: true})
+    refreshToken!: string;
+
     @CreateDateColumn()
     createdAt!: Date;
 

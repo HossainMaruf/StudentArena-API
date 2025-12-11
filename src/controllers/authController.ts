@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
 import bcrypt from 'bcrypt';
-import jwt from "jsonwebtoken";
-import { env } from "../config/env";
 import { userService } from "../services/userService";
+import { createAccessToken, createRefreshToken, verifyRefreshToken } from "../utils/jwt";
 
 export const register = async (req: Request, res: Response) => {
     try {
@@ -34,8 +33,14 @@ export const login = async (req: Request, res: Response) => {
         const valid = await bcrypt.compare(password, user.password);
         if(!valid) return res.status(400).json({message: "Invalid Credentials"});
 
-        // Create JWT
-        const token = (jwt as any).sign({id: user.id, email: user.email}, env.JWT_SECRET, {expiresIn: env.JWT_EXPIRES_IN});
+        // Create tokens
+        const bearer = "Bearer ";
+        const accessToken = await createAccessToken({id: user.id, email: user.email});
+        const refreshToken = await createRefreshToken({id: user.id, email: user.email});
+
+        // Store refreshToken in Database
+        user.refreshToken = refreshToken;
+        userService.updateUser(user.id, user);
 
         // TODO: Send token as cookie
         // res.cookie("token", token, {
@@ -44,14 +49,49 @@ export const login = async (req: Request, res: Response) => {
         //     maxAge: 24 * 60 * 60 * 1000
         // });
 
-        return res.json({message: "Login Success", token: "Bearer " + token});
+        return res.json({accessToken, refreshToken});
     } catch(error) {
-        return res.status(500).json({error});
+        return res.status(500).json(error);
     }
 
 }
+
 export const logout = async (req: Request, res: Response) => {
-    res.json({message: "Logout"});
+    const {token} = req.body;
+    if(!token) {
+        return res.status(400).json({message: "No token provided"});
+    }
+
+    try {
+        const decoded = verifyRefreshToken(token) as {id: number};
+        const user = await userService.getUserById(decoded.id);
+        if(!user) return res.status(404).json({message: "User not found"});
+        if(user.refreshToken !== token) return res.status(400).json({message: "Invalid token"});
+        user.refreshToken = "";
+        await userService.updateUser(decoded.id, user);
+        return res.json({message: "Logged out successfully"});
+    } catch(error) {
+        return res.status(400).json({message: "Invalid token"});
+    }
+}
+
+export const refreshToken = async (req: Request, res: Response) => {
+    const {token} = req.body;
+    if(!token) {
+        return res.status(401).json({message: "No token provided"});
+    }
+
+    try {
+        const decoded = verifyRefreshToken(token) as {id: number};
+        const user = await userService.getUserById(decoded.id);
+        if(!user || user.refreshToken !== token) {
+            return res.status(401).json({message: "Invalid refresh token"});
+        }
+        const accessToken = await createAccessToken({id: user.id, email: user.email});
+        return res.json({accessToken});
+    } catch(error) {
+        return res.status(401).json({message: "Invalid refresh token", error});
+    }
 }
 export const forgotPassword = async (req: Request, res: Response) => {}
 export const changePassword = async (req: Request, res: Response) => {}
