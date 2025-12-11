@@ -17,17 +17,20 @@ Content-Type: application/json
 {
     "name": "maruf",
     "email": "maruficepustian@gmail.com",
-    "age": 48
+    "password": "dfjdklfjldjf"
 }
 
 ### Update a user
-PUT http://localhost:5000/users/99
+PUT http://localhost:5000/users/21
 Content-Type: application/json
 
 {
     "name": "Maruf Hossain",
     "email": "maruficepustian@gmail.com",
-    "age": 48
+    "age": 34,
+    "city": "Jhenaidah",
+    "bio": "This is a bio",
+    "relationship": "married"
 }
 
 ### Delete a user

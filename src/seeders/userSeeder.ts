@@ -11,7 +11,7 @@ export const userSeeder = async () => {
         const user = userRepository.create({
             name: faker.person.fullName(),
             email: faker.internet.email(),
-            age: faker.number.int({min: 18, max: 60})
+            password: faker.internet.password()
         });
         users.push(user);
     }
