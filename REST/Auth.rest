@@ -22,7 +22,7 @@ POST http://localhost:5000/auth/logout
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NTMzNTAsImV4cCI6MTc2ODA0NTM1MH0.q8W2mdR1RRx8-7pWw9qT5t3N_0mssPdY6_owLkyNruI"
+    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NTQ5NDUsImV4cCI6MTc2ODA0Njk0NX0.WJWNcVWyN2EPphewxZgm_jqKiSjCNVCqzuQ6IqhoFOU"
 }
 
 ### Get Access token by Refresh token
@@ -30,5 +30,5 @@ POST http://localhost:5000/auth/refresh
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NTMzNTAsImV4cCI6MTc2ODA0NTM1MH0.q8W2mdR1RRx8-7pWw9qT5t3N_0mssPdY6_owLkyNruI"
+    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NTQ4MTEsImV4cCI6MTc2ODA0NjgxMX0.MK40696z9hPW-yDOthcdjqkP4UYRmwTSanoo9sQ2CCk"
 }

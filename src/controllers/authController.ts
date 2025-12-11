@@ -34,7 +34,6 @@ export const login = async (req: Request, res: Response) => {
         if(!valid) return res.status(400).json({message: "Invalid Credentials"});
 
         // Create tokens
-        const bearer = "Bearer ";
         const accessToken = await createAccessToken({id: user.id, email: user.email});
         const refreshToken = await createRefreshToken({id: user.id, email: user.email});
 
@@ -80,7 +79,6 @@ export const refreshToken = async (req: Request, res: Response) => {
     if(!token) {
         return res.status(401).json({message: "No token provided"});
     }
-
     try {
         const decoded = verifyRefreshToken(token) as {id: number};
         const user = await userService.getUserById(decoded.id);
@@ -90,7 +88,7 @@ export const refreshToken = async (req: Request, res: Response) => {
         const accessToken = await createAccessToken({id: user.id, email: user.email});
         return res.json({accessToken});
     } catch(error) {
-        return res.status(401).json({message: "Invalid refresh token", error});
+        return res.status(401).json(error);
     }
 }
 export const forgotPassword = async (req: Request, res: Response) => {}
