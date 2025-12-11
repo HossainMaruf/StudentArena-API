@@ -3,8 +3,8 @@ POST http://localhost:5000/auth/register
 Content-Type: application/json
 
 {
-    "name": "Md. Maruf Hossain",
-    "email": "example@gmail.com",
+    "name": "mmm",
+    "email": "tto0@gmail.com",
     "password": "112233"
 }
 
@@ -22,7 +22,7 @@ POST http://localhost:5000/auth/logout
 Content-Type: application/json
 
 {
-    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NTkyNzUsImV4cCI6MTc2ODA1MTI3NX0.yOps_2Vs64URCrOh18gdPsNlz-95khdlRElQiY5ikZY"
+  "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODEsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NjY0MTYsImV4cCI6MTc2ODA1ODQxNn0.T7nu9sng5C_2nqtdGzMAO_wBTitQQB-GbLloDPs3iuU"
 }
 
 ### Get Access token by Refresh token
@@ -30,5 +30,6 @@ POST http://localhost:5000/auth/refresh
 Content-Type: application/json
 
 {
-    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NTQ4MTEsImV4cCI6MTc2ODA0NjgxMX0.MK40696z9hPW-yDOthcdjqkP4UYRmwTSanoo9sQ2CCk"
+  "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODEsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3NjU0NjYyMDMsImV4cCI6MTc2ODA1ODIwM30.C5JNu1be9rhLc2r44qT2B9nY1o7dfuSroiGuJ7MqYWg"
+
 }
