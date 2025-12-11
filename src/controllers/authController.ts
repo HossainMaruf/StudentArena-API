@@ -37,18 +37,21 @@ export const login = async (req: Request, res: Response) => {
         // Create JWT
         const token = (jwt as any).sign({id: user.id, email: user.email}, env.JWT_SECRET, {expiresIn: env.JWT_EXPIRES_IN});
 
-        // Send token as cookie (optional)
-        res.cookie("token", token, {
-            httpOnly: true,
-            secure: false, // true in production
-            maxAge: 24 * 60 * 60 * 1000
-        });
-        return res.json({message: "Login Success", token});
+        // TODO: Send token as cookie
+        // res.cookie("token", token, {
+        //     httpOnly: true,
+        //     secure: false, // true in production
+        //     maxAge: 24 * 60 * 60 * 1000
+        // });
+
+        return res.json({message: "Login Success", token: "Bearer " + token});
     } catch(error) {
         return res.status(500).json({error});
     }
 
 }
-export const logout = async (req: Request, res: Response) => {}
+export const logout = async (req: Request, res: Response) => {
+    res.json({message: "Logout"});
+}
 export const forgotPassword = async (req: Request, res: Response) => {}
 export const changePassword = async (req: Request, res: Response) => {}

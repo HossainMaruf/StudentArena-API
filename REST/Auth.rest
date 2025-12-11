@@ -16,3 +16,8 @@ Content-Type: application/json
     "email": "mmmarufhossain007@gmail.com",
     "password": "112233"
 }
+
+### Logout
+POST http://localhost:5000/auth/logout
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsImVtYWlsIjoibW1tYXJ1Zmhvc3NhaW4wMDdAZ21haWwuY29tIiwiaWF0IjoxNzY1NDQzNTQ4LCJleHAiOjE3NjU0NDcxNDh9.ft6wQACekx2BrXfot0sX8lBEwQaE1kjOO6nG-oNDMIs
