@@ -1,0 +1,3 @@
+### Get all courses
+GET http://localhost:5000/courses
+Content-Type: application/json

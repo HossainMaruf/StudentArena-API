@@ -1,8 +1,9 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
 export enum CourseType {THEORY="Theory", LAB="Lab"}
 
-@Entity() // @Entity('courses')
+// @Entity('courses')
+@Entity()
 export class Course {
     @PrimaryColumn()
     code!: number;
@@ -15,4 +16,10 @@ export class Course {
 
     @Column({type: "enum", enum: CourseType})
     type!: CourseType
+
+    @CreateDateColumn()
+    createdAt!: Date;
+
+    @UpdateDateColumn()
+    updatedAt!: Date;
 }

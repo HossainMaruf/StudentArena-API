@@ -4,7 +4,8 @@ import { Post } from "./Post";
 export enum UserRole { ADMIN = "admin", USER = "user", GUEST = "guest" }
 export enum RelationType { SINGLE = "single", MARRIED = "married", COMPLICATED = "complicated"}
 
-@Entity() // @Entity('users')
+// @Entity('users')
+@Entity()
 export class User {
     @PrimaryGeneratedColumn()
     id!: number;

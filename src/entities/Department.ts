@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
-@Entity() // @Entity('departments')
+// @Entity('departments')
+@Entity()
 export class Department {
     @PrimaryColumn()
     code!: number;
@@ -10,4 +11,10 @@ export class Department {
 
     @Column()
     abbreviation!: string; 
+
+    @CreateDateColumn()
+    createdAt!: Date;
+
+    @UpdateDateColumn()
+    updatedAt!: Date;
 }

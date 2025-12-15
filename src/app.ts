@@ -3,8 +3,9 @@ import { AppDataSource } from "./database/data-source";
 import userRoutes from './routes/userRoutes';
 import postRoutes from './routes/postRoutes';
 import authRoutes from './routes/authRoutes';
+import courseRoutes from './routes/courseRoutes';
+import departmentRoutes from './routes/departmentRoutes';
 
-import userUiRoutes from './ui/routes/userUiRoutes';
 
 const app: Application = express();
 
@@ -21,7 +22,7 @@ AppDataSource.initialize()
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 app.use("/auth", authRoutes);
-
-app.use("/ui", userUiRoutes);
+app.use("/courses", courseRoutes);
+app.use("/departments", departmentRoutes);
 
 export default app;
