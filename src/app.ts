@@ -4,6 +4,8 @@ import userRoutes from './routes/userRoutes';
 import postRoutes from './routes/postRoutes';
 import authRoutes from './routes/authRoutes';
 
+import userUiRoutes from './ui/routes/userUiRoutes';
+
 const app: Application = express();
 
 // Middleware
@@ -19,5 +21,7 @@ AppDataSource.initialize()
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 app.use("/auth", authRoutes);
+
+app.use("/ui", userUiRoutes);
 
 export default app;

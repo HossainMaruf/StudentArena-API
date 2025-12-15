@@ -1,6 +1,8 @@
 import { AppDataSource } from "../data-source";
 import { userSeeder } from "./userSeeder";
 import { postSeeder } from "./postSeeder";
+import { courseSeeder } from "./courseSeeder";
+import { departmentSeeder } from "./departmentSeeder";
 
 // CLI Flag: seed / clean / refresh
 const method = process.argv[2];
@@ -35,9 +37,11 @@ async function executor(fn: () => Promise<void>) {
 async function seed() {
     console.log("Seeding...");
 
-    const users = await userSeeder();
-    await postSeeder(users);
-    
+    // const users = await userSeeder();
+    // await postSeeder(users);
+    await departmentSeeder();
+    await courseSeeder();
+
     console.log("Seeding Complete!");
 }
 
