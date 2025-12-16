@@ -1,5 +1,4 @@
 import { Entity, Column, ManyToOne, ManyToMany, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, JoinTable, JoinColumn } from "typeorm";
-import { Course } from "./Course";
 import { Department } from "./Department";
 
 export enum TERM_TYPE {SEMESTER="semester", TRIMESTER="trimester", YEAR="year"}
@@ -11,25 +10,17 @@ export class CCSP {
     @PrimaryGeneratedColumn()
     id!: number;
 
+    @Column()
+    name!: string;
+
     @ManyToOne(() => Department, (department: Department) => department.ccsps)
     department!: Department;
 
-    @ManyToMany(() => Course, (course: Course) => course.ccsps)
-    @JoinTable({
-        name: "ccsp_course",
-        joinColumn: {
-            name: "ccsp_id",
-            referencedColumnName: "id"
-        },
-        inverseJoinColumn: {
-            name: "course_id",
-            referencedColumnName: "code"
-        }
-    })
-    courses!: Course[];
+    @Column({type: "json"})
+    courses!: string[];
 
     @Column({type: "json"}) // Form inputed value
-    offerdTerm!: number[];
+    offeredTerm!: number[];
 
     @Column({type: "json"}) //  Form inputed value
     isOptional!: boolean[];

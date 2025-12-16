@@ -5,7 +5,7 @@ import { CCSP } from "./CCSP";
 @Entity()
 export class Department {
     @PrimaryColumn()
-    code!: number;
+    code!: string;
 
     @Column()
     name!: string;

@@ -40,6 +40,7 @@ async function seed() {
 
     // const users = await userSeeder();
     // await postSeeder(users);
+
     const departments = await departmentSeeder();
     const courses = await courseSeeder();
     await ccspSeeder(departments, courses);

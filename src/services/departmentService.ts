@@ -10,7 +10,7 @@ export const departmentService = {
     },
 
     // Get a department by code
-    getDepartmentByCode: async (code: number): Promise<Department | null> => {
+    getDepartmentByCode: async (code: string): Promise<Department | null> => {
         return departmentRepository.findOneBy({code})
     },
 
@@ -21,7 +21,7 @@ export const departmentService = {
     },
 
     // Update an existing department
-    updateDepartment: async (code: number, data: Partial<Department>): Promise<Department | null> => {
+    updateDepartment: async (code: string, data: Partial<Department>): Promise<Department | null> => {
         const course = await departmentRepository.findOneBy({code});
         if(!course) return null;
         Object.assign(course, data);
@@ -29,7 +29,7 @@ export const departmentService = {
     },
 
     // Delete a department
-    deleteDepartment: async (code: number): Promise<boolean> => {
+    deleteDepartment: async (code: string): Promise<boolean> => {
         const result = await departmentRepository.delete({code});
         return result.affected != 0;
     }

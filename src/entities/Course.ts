@@ -18,9 +18,6 @@ export class Course {
     @Column({type: "enum", enum: CourseType})
     type!: CourseType;
 
-    @ManyToMany(() => CCSP, (ccsp: CCSP) => ccsp.courses)
-    ccsps!: CCSP[];
-
     @CreateDateColumn()
     createdAt!: Date;
 

@@ -9,7 +9,7 @@ export const departmentSeeder = async () => {
 
     for(let i=0; i<5; i++) {
         const department = departmentRepository.create({
-            code: Math.floor(Math.random() * 100),
+            code: Math.floor(Math.random() * 100).toString(),
             name: faker.company.name(),
             abbreviation: faker.lorem.word()
         });

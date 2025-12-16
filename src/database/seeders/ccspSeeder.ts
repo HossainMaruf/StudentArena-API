@@ -1,3 +1,4 @@
+import { faker } from "@faker-js/faker";
 import { AppDataSource } from "../data-source";
 import { Department } from "../../entities/Department";
 import { Course } from "../../entities/Course";
@@ -13,9 +14,10 @@ export const ccspSeeder = async (departments: Department[], courses: Course[]) =
         const randomCourse = courses[Math.floor(Math.random() * courses.length)];
 
         const ccsp = ccspRepository.create({
+            name: faker.lorem.words(),
             department: randomDeptartment,
-            courses: [randomCourse, randomCourse],
-            offerdTerm: [1, 2],
+            courses: [randomCourse.code, randomCourse.code],
+            offeredTerm: [1, 2],
             isOptional: [false, false],
             credits: 175,
             totalDuration: "4Y",
