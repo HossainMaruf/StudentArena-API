@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, Column, OneToMany, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { CCSP } from "./CCSP";
 
 // @Entity('departments')
 @Entity()
@@ -11,6 +12,9 @@ export class Department {
 
     @Column()
     abbreviation!: string; 
+
+    @OneToMany(() => CCSP, (ccsp: CCSP) => ccsp.department)
+    ccsps!: CCSP[];
 
     @CreateDateColumn()
     createdAt!: Date;

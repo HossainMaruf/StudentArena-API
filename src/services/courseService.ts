@@ -10,7 +10,7 @@ export const courseService = {
     },
 
     // Get a course by code
-    getCourseByCode: async (code: number): Promise<Course | null> => {
+    getCourseByCode: async (code: string): Promise<Course | null> => {
         return courseRepository.findOneBy({code})
     },
 
@@ -21,7 +21,7 @@ export const courseService = {
     },
 
     // Update an existing course
-    updateCourse: async (code: number, data: Partial<Course>): Promise<Course | null> => {
+    updateCourse: async (code: string, data: Partial<Course>): Promise<Course | null> => {
         const course = await courseRepository.findOneBy({code});
         if(!course) return null;
         Object.assign(course, data);
@@ -29,7 +29,7 @@ export const courseService = {
     },
 
     // Delete a course
-    deleteCourse: async (code: number): Promise<boolean> => {
+    deleteCourse: async (code: string): Promise<boolean> => {
         const result = await courseRepository.delete({code});
         return result.affected != 0;
     }

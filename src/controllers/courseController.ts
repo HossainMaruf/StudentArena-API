@@ -7,7 +7,7 @@ export const getCourses = async (req: Request, res: Response) => {
 }
 
 export const getCourse = async (req: Request, res: Response) => {
-    const course = await courseService.getCourseByCode(parseInt(req.params.code));
+    const course = await courseService.getCourseByCode(req.params.code);
     if(!course) return res.status(404).json({message: "Course not found"});
     res.json(course);
 }
@@ -18,13 +18,13 @@ export const createCourse = async (req: Request, res: Response) => {
 }
 
 export const updateCourse = async (req: Request, res: Response) => {
-    const course = await courseService.updateCourse(parseInt(req.params.code), req.body);
+    const course = await courseService.updateCourse(req.params.code, req.body);
     if(!course) return res.status(404).json({message: "Course not found"});
     res.json(course);
 }
 
 export const deleteCourse = async (req: Request, res: Response) => {
-    const deleted = await courseService.deleteCourse(parseInt(req.params.code));
+    const deleted = await courseService.deleteCourse(req.params.code);
     if(!deleted) return res.status(404).json({message: "Course not found"});
     res.json({message: "Course deleted successfully"});
 }

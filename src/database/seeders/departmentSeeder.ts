@@ -17,4 +17,5 @@ export const departmentSeeder = async () => {
     }
     await departmentRepository.save(departments);
     console.log("Department seeded👍");
+    return departments;
 }
