@@ -9,10 +9,9 @@ export const courseSeeder = async () => {
 
     for(let i=0; i<10; i++) {
         const course = courseRepository.create({
-            code: faker.lorem.word(),
-            title: faker.lorem.words(5),
-            credit: 3.00,
-            type: "theory" as CourseType
+            code: "CSE"+(10+i),
+            title: faker.book.title(), 
+            credit: 3.00
         });
         courses.push(course);
     }

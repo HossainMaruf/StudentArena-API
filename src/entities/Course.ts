@@ -1,5 +1,5 @@
-import { Entity, Column, ManyToMany, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
-import { CCSP } from "./CCSP";
+import { Entity, Column, OneToMany, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { CcspCourse } from "./CcspCourse";
 
 export enum CourseType {THEORY="theory", LAB="lab"}
 
@@ -12,11 +12,14 @@ export class Course {
     @Column()
     title!: string;
     
-    @Column()
+    @Column({type: 'float'})
     credit!: number;
 
-    @Column({type: "enum", enum: CourseType})
+    @Column({type: "enum", enum: CourseType, default: CourseType.THEORY})
     type!: CourseType;
+
+    @OneToMany(() => CcspCourse, (ccspCourse: CcspCourse) => ccspCourse.course)
+    ccspCourses!: CcspCourse[];
 
     @CreateDateColumn()
     createdAt!: Date;

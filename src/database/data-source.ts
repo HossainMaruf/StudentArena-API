@@ -5,6 +5,7 @@ import { Post } from '../entities/Post';
 import { Department } from '../entities/Department';
 import { Course } from '../entities/Course';
 import { CCSP } from '../entities/CCSP';
+import { CcspCourse } from '../entities/CcspCourse';
 import { env } from '../config/env';
 
 export const AppDataSource = new DataSource({
@@ -16,7 +17,7 @@ export const AppDataSource = new DataSource({
     database: env.DB_NAME,
     synchronize: true,
     logging: false,
-    entities: [User, Post, Department, Course, CCSP],
+    entities: [User, Post, Department, Course, CCSP, CcspCourse],
     migrations: [],
     subscribers: []
 });

@@ -4,6 +4,7 @@ import { postSeeder } from "./postSeeder";
 import { courseSeeder } from "./courseSeeder";
 import { departmentSeeder } from "./departmentSeeder";
 import { ccspSeeder } from "./ccspSeeder";
+import { ccspCourseSeeder } from "./ccspCourseSeeder";
 
 // CLI Flag: seed / clean / refresh
 const method = process.argv[2];
@@ -42,8 +43,9 @@ async function seed() {
     // await postSeeder(users);
 
     const departments = await departmentSeeder();
+    const ccsps = await ccspSeeder(departments);
     const courses = await courseSeeder();
-    await ccspSeeder(departments, courses);
+    await ccspCourseSeeder(ccsps, courses);
 
     console.log("Seeding Complete!");
 }

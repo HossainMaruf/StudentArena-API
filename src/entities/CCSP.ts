@@ -1,5 +1,6 @@
-import { Entity, Column, ManyToOne, ManyToMany, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, JoinTable, JoinColumn } from "typeorm";
+import { Entity, Column, ManyToOne, OneToMany, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Department } from "./Department";
+import { CcspCourse } from "./CcspCourse";
 
 export enum TERM_TYPE {SEMESTER="semester", TRIMESTER="trimester", YEAR="year"}
 
@@ -16,16 +17,10 @@ export class CCSP {
     @ManyToOne(() => Department, (department: Department) => department.ccsps)
     department!: Department;
 
-    @Column({type: "json"})
-    courses!: string[];
+    @OneToMany(() => CcspCourse, (ccspCourse: CcspCourse) => ccspCourse.ccsp)
+    ccspCourses!: CcspCourse[];
 
-    @Column({type: "json"}) // Form inputed value
-    offeredTerm!: number[];
-
-    @Column({type: "json"}) //  Form inputed value
-    isOptional!: boolean[];
-
-    @Column() // Computed value based on courses column
+    @Column({type: 'float'})
     credits!: number;
 
     @Column({default: "4Y"}) // Total Time Period of that CCSP
