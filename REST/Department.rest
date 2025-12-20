@@ -1,3 +1,35 @@
 ### Get all departments
 GET http://localhost:5000/departments
 Content-Type: application/json
+
+### Get a department by code
+GET http://localhost:5000/departments/20
+Content-Type: application/json
+
+### Create a department
+POST http://localhost:5000/departments
+Content-Type: application/json
+
+{
+    "code": "06",
+    "name": "Computer Science and Engineering",
+    "abbreviation": "CSE"
+}
+
+### Update a department by code
+PUT http://localhost:5000/departments/06
+Content-Type: application/json
+
+{
+    "code": "06",
+    "name": "Computer Science and Technology",
+    "abbreviation": "CSE"
+}
+
+### Delete a department by code
+DELETE http://localhost:5000/departments/06
+Content-Type: application/json
+
+### Get all ccsps of a department by department code
+GET http://localhost:5000/departments/19/ccsps
+Content-Type: application/json

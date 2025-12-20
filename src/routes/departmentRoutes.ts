@@ -1,12 +1,13 @@
 import { Router } from "express";
-import { getDepartments, getDeparment, createDeparment, updateDeparment, deleteDeparment } from "../controllers/departmentController";
+import { getDepartments, getDepartment, createDepartment, updateDepartment, deleteDepartment, getDepartmentWithCcsps } from "../controllers/departmentController";
 
 const router = Router();
 
 router.get("/", getDepartments);
-router.get("/:code", getDeparment);
-router.post("/", createDeparment);
-router.put("/:code", updateDeparment);
-router.delete("/:code", deleteDeparment);
+router.get("/:code", getDepartment);
+router.post("/", createDepartment);
+router.put("/:code", updateDepartment);
+router.delete("/:code", deleteDepartment);
+router.get("/:code/ccsps", getDepartmentWithCcsps);
 
 export default router;

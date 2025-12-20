@@ -9,12 +9,12 @@ export enum TERM_TYPE {SEMESTER="semester", TRIMESTER="trimester", YEAR="year"}
 @Entity()
 export class CCSP {
     @PrimaryGeneratedColumn()
-    id!: number;
+    code!: number;
 
     @Column()
     name!: string;
 
-    @ManyToOne(() => Department, (department: Department) => department.ccsps)
+    @ManyToOne(() => Department, (department: Department) => department.ccsps, {nullable: false})
     department!: Department;
 
     @OneToMany(() => CcspCourse, (ccspCourse: CcspCourse) => ccspCourse.ccsp)

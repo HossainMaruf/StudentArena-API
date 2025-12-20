@@ -9,9 +9,9 @@ export const ccspService = {
         return ccspRepository.find();
     },
 
-    // Get a ccsp by id
-    getCcspById: async (id: number): Promise<CCSP | null> => {
-        return ccspRepository.findOneBy({id})
+    // Get a ccsp by code
+    getCcspByCode: async (code: number): Promise<CCSP | null> => {
+        return ccspRepository.findOneBy({code})
     },
 
     // Create a new ccsp
@@ -21,16 +21,16 @@ export const ccspService = {
     },
 
     // Update an existing ccsp
-    updateCcsp: async (id: number, data: Partial<CCSP>): Promise<CCSP | null> => {
-        const ccsp = await ccspRepository.findOneBy({id});
+    updateCcsp: async (code: number, data: Partial<CCSP>): Promise<CCSP | null> => {
+        const ccsp = await ccspRepository.findOneBy({code});
         if(!ccsp) return null;
         Object.assign(ccsp, data);
         return ccspRepository.save(ccsp);
     },
 
     // Delete a ccsp
-    deleteCcsp: async (id: number): Promise<boolean> => {
-        const result = await ccspRepository.delete({id});
+    deleteCcsp: async (code: number): Promise<boolean> => {
+        const result = await ccspRepository.delete({code});
         return result.affected != 0;
     }
 }

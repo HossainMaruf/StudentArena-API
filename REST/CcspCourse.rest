@@ -1,0 +1,4 @@
+### Get all ccsp courses
+GET http://localhost:5000/ccspcourses
+Content-Type: application/json
+

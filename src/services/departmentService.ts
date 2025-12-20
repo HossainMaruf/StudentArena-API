@@ -32,5 +32,10 @@ export const departmentService = {
     deleteDepartment: async (code: string): Promise<boolean> => {
         const result = await departmentRepository.delete({code});
         return result.affected != 0;
+    },
+
+    // Get department by code with all its ccsps
+    getDepartmentWithCcsps: async (code: string): Promise<Department | null> => {
+        return departmentRepository.findOne({where: {code}, relations: ['ccsps']})
     }
 }

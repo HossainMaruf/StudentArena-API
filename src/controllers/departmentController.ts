@@ -6,25 +6,31 @@ export const getDepartments = async (req: Request, res: Response) => {
     res.json(departments);
 }
 
-export const getDeparment = async (req: Request, res: Response) => {
+export const getDepartment = async (req: Request, res: Response) => {
     const department = await departmentService.getDepartmentByCode(req.params.code);
-    if(!department) return res.status(404).json({message: "Deparment not found"});
+    if(!department) return res.status(404).json({message: "Department not found"});
     res.json(department);
 }
 
-export const createDeparment = async (req: Request, res: Response) => {
+export const createDepartment = async (req: Request, res: Response) => {
     const department = await departmentService.createDepartment(req.body);
     res.status(201).json(department);
 }
 
-export const updateDeparment = async (req: Request, res: Response) => {
+export const updateDepartment = async (req: Request, res: Response) => {
     const department = await departmentService.updateDepartment(req.params.code, req.body);
-    if(!department) return res.status(404).json({message: "Deparment not found"});
+    if(!department) return res.status(404).json({message: "Department not found"});
     res.json(department);
 }
 
-export const deleteDeparment = async (req: Request, res: Response) => {
+export const deleteDepartment = async (req: Request, res: Response) => {
     const deleted = await departmentService.deleteDepartment(req.params.code);
-    if(!deleted) return res.status(404).json({message: "Deparment not found"});
+    if(!deleted) return res.status(404).json({message: "Department not found"});
     res.json({message: "Deparment deleted successfully"});
+}
+
+export const getDepartmentWithCcsps = async (req: Request, res: Response) => {
+    const department = await departmentService.getDepartmentWithCcsps(req.params.code);
+    if(!department) return res.status(400).json({message: "Department not found"});
+    res.json(department);
 }

@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker";
 import { AppDataSource } from "../data-source";
-import { Course, CourseType } from "../../entities/Course";
+import { Course } from "../../entities/Course";
 
 export const courseSeeder = async () => {
     const courseRepository = AppDataSource.getRepository(Course);

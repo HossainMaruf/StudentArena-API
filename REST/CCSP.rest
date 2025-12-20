@@ -1,5 +1,9 @@
-### Get all ccsp
+### Get all ccsps
 GET http://localhost:5000/ccsps
+Content-Type: application/json
+
+### Get a ccsp by code
+GET http://localhost:5000/ccsps/5
 Content-Type: application/json
 
 ### Crate a ccsp
@@ -7,11 +11,20 @@ POST http://localhost:5000/ccsps
 Content-Type: application/json
 
 {
-    "name": "CSE OBE (4M)",
-    "departmentCode": "1010",
-    "courses": ["OOP", "SQL"],
-    "offeredTerm": [4, 5],
-    "isOptional": [false, false],
+    "name": "CSE EVENING (4M)",
+    "department": "19",
     "credits": 40,
     "terms": 8
 }
+
+### Update a ccsp by code
+PUT http://localhost:5000/ccsps/5
+Content-Type: application/json
+
+{
+    "name": "CSE EVENING (6M)"
+}
+
+### Delete a ccsp by code
+DELETE http://localhost:5000/ccsps/8
+Content-Type: application/json

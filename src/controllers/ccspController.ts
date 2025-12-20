@@ -6,8 +6,8 @@ export const getCcsps = async (req: Request, res: Response) => {
     res.json(ccsps);
 }
 
-export const getCcspById = async (req: Request, res: Response) => {
-    const ccsp = await ccspService.getCcspById(parseInt(req.params.id));
+export const getCcspByCode = async (req: Request, res: Response) => {
+    const ccsp = await ccspService.getCcspByCode(parseInt(req.params.code));
     if(!ccsp) return res.status(404).json({message: "ccsp not found"});
     res.json(ccsp);
 }

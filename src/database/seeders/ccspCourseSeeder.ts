@@ -1,4 +1,3 @@
-import { faker } from "@faker-js/faker";
 import { AppDataSource } from "../data-source";
 import { Course } from "../../entities/Course";
 import { CCSP } from "../../entities/CCSP";
