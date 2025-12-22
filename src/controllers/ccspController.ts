@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { ccspService } from "../services/ccspService";
+import { DtoMapper } from "../dtos/DtoMapper";
 
 export const getCcsps = async (req: Request, res: Response) => {
     const ccsps = await ccspService.getCcsps();
@@ -27,4 +28,10 @@ export const deleteCcsp = async (req: Request, res: Response) => {
     const ccsp = await ccspService.deleteCcsp(parseInt(req.params.code));
     if(!ccsp) return res.status(404).json({message: "ccsp not found"});
     res.json({message: "ccsp deleted successfully"});
+}
+
+export const getCcspWithCourses = async (req: Request, res: Response) => {
+    const ccsp = await ccspService.getCcspWithCourses(parseInt(req.params.code));
+    if(!ccsp) return res.status(404).json({message: "ccsp not found"});
+    res.json(DtoMapper.toCcspWithCourses(ccsp));
 }

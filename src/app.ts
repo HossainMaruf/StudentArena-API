@@ -6,7 +6,6 @@ import authRoutes from './routes/authRoutes';
 import departmentRoutes from './routes/departmentRoutes';
 import ccspRoutes from './routes/ccspRoutes';
 import courseRoutes from './routes/courseRoutes';
-import ccspCourseRoutes from './routes/ccspCourseRoutes';
 
 
 const app: Application = express();
@@ -27,6 +26,5 @@ app.use("/auth", authRoutes);
 app.use("/courses", courseRoutes);
 app.use("/departments", departmentRoutes);
 app.use("/ccsps", ccspRoutes);
-app.use("/ccspcourses", ccspCourseRoutes);
 
 export default app;

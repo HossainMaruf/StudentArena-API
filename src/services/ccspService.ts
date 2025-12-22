@@ -32,5 +32,10 @@ export const ccspService = {
     deleteCcsp: async (code: number): Promise<boolean> => {
         const result = await ccspRepository.delete({code});
         return result.affected != 0;
+    },
+
+    // Get ccsp with all the associated courses
+    getCcspWithCourses: async (code: number): Promise<CCSP | null> => {
+        return ccspRepository.findOne({where: {code}, relations: ['ccspCourses.course']})
     }
 }

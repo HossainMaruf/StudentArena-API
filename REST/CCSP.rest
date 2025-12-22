@@ -28,3 +28,9 @@ Content-Type: application/json
 ### Delete a ccsp by code
 DELETE http://localhost:5000/ccsps/8
 Content-Type: application/json
+
+### Get all the courses of a particular ccsp
+GET http://localhost:5000/ccsps/2/courses
+Content-Type: application/json
+
+### Get a ccsp with the department info
