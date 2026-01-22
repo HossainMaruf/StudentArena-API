@@ -6,7 +6,7 @@ Content-Type: application/json
 GET http://localhost:5000/ccsps/5
 Content-Type: application/json
 
-### Crate a ccsp
+### Create a ccsp
 POST http://localhost:5000/ccsps
 Content-Type: application/json
 

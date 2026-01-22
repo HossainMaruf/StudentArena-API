@@ -1,5 +1,4 @@
 import { CCSP } from "../entities/CCSP";
-import { CcspCourse } from "../entities/CcspCourse";
 
 export class DtoMapper {
     static toCcspWithCourses(ccsp: CCSP) {
